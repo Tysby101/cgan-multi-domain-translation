@@ -1,0 +1,50 @@
+# Base Configuration for Multi-Domain cGAN
+model:
+  name: "MultiDomainCGAN"
+  generator:
+    type: "AttentionUNet"
+    input_channels: 3
+    output_channels: 3
+    features: 64
+    attention_layers: [2, 4, 6]
+    use_spectral_norm: true
+  
+  discriminator:
+    type: "MultiScaleDiscriminator"
+    input_channels: 6  # source + target
+    features: 64
+    num_scales: 3
+    use_spectral_norm: true
+
+training:
+  batch_size: 16
+  epochs: 200
+  learning_rate:
+    generator: 0.0002
+    discriminator: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+  lambda_l1: 100.0
+  lambda_perceptual: 10.0
+  lambda_gp: 10.0
+
+data:
+  dataset_name: "CelebA_FFHQ"
+  image_size: 256
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  num_workers: 4
+  pin_memory: true
+
+paths:
+  data_root: "./data"
+  checkpoints: "./checkpoints"
+  logs: "./logs"
+  results: "./results"
+
+device: "cuda"
+mixed_precision: true
+gradient_accumulation_steps: 1
+save_frequency: 10
+validation_frequency: 5
