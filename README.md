@@ -2,7 +2,6 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A sophisticated implementation of conditional Generative Adversarial Networks (cGANs) with self-attention mechanisms for high-quality image-to-image translation tasks. This project demonstrates advanced deep learning techniques including multi-scale discriminators, perceptual losses, and attention-guided generation.
 
